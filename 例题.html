@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<!--
+	<div class="d">
+		<p  align="center">邮箱:<input type="text" id="name"></p>
+		<p align="center">密码:<input type="password" id="name1"></p>
+		<p align="center"><input type="button" onClick="dl()" value="登录"><a href="#"> 忘记密码了？</a></p>
+	</div>
+-->
+<!--
+	<script type="text/javascript">
+    var i=1;   // 保存动画当前播放的静态画面的索引
+    function change(){
+      if(i<4) i++;
+	  else i=1;   // 播放到最后一幅图画时，再从头开始
+      document.getElementById("pic").src="微信图片_20210925100749.jpg"+i+".gif";
+    } 
+      var dh;
+    function play() {
+      dh=setInterval("change()",100);
+    }
+    function stop() {
+      clearInterval(dh);
+    }
+  </script>
+-->
+	
+	<script type="text/javascript">
+		    //先建立所有奖品的集合
+		var list=['免单4999元', '免单50元', '免单10元', '免单5元', '免分期服务费', '提高白条额度', '未中奖'];
+		//抽奖的状态
+		var isStart=true;
+		//获得奖品的索引
+		var index=null;
+		//当前的奖品
+		var nowTxt=null;
+		//点击抽奖
+		var pointer=document.querySelector(".pointer");
+		//获取rotate
+		var rotate=document.querySelector(".rotate");
+		//默认转的度数
+		var defaultAngle=1800;//默认转五圈
+		var angle=360/list.length;
+		pointer.onclick=function(){
+			if(isStart){
+				//开始抽奖
+				isStart=false;
+				index=getinfo();
+				nowTxt=list[index];
+				var agl=index*angle+defaultAngle+Math.random()*angle;
+				rotate.style.transform="rotatez("+agl+"deg)";
+				setTimeout(function(){
+					alert("奖品："+nowTxt);
+					isStart=true;
+				},3000)
+			}
+		}
+		function getinfo(){
+			var num=Math.random();
+			var i=null;
+			if(num<0.03){
+				i=0;
+			}
+			else if(num<0.1){
+				i=1;
+			}
+			else if(num<0.2)
+			{
+				i=2;//10%
+			}
+			else if(num<0.35)
+			{
+				i=3;//15%
+			}
+			else if(num<0.55)
+			{
+				i=4;//20%
+			}
+			else if(num<0.85)
+			{
+				i=5;//30%
+			}
+			else{
+				i=6;
+			}
+			return i;
+		} 
+	</script>
+	
+<!--
+	<script type="text/javascript">
+		var many=340,hy=true,sum;
+		if(hy==true)
+			{
+				if(many>200)
+					{
+						sum=many*0.75;
+					}
+				else
+					{
+						sum=many*0.9;
+					}
+					document.write("会员消费："+many);
+					document.write("实际消费："+sum);
+			}
+		else
+			{
+				if(many>100)
+					{
+						sum=many*0.9;
+				}
+				else
+					{
+					sum=many;
+					}
+					document.write("非会员消费："+many);
+					document.write("实际消费："+sum);
+			}
+	</script>
+-->
+	
+<!--
+	<div align="center">
+	  	<img src="第三章/sr1.jpg" alt="" id="img" width="250px">
+	<br/>
+	<br/>
+	<input type="button" id="strat" value="开始">
+	<input type="button" id="stop" value="停止">
+	</div>
+	<script type="text/javascript">
+		var img=document.getElementById("img");
+	 	var strat=document.getElementById("strat");
+	 	var stop=document.getElementById("stop");
+	  	var i=0;
+	  	var timer;
+	  	var flag=0;
+	strat.onclick=function()
+	{
+			if(flag==0)
+		{
+		 	timer=setInterval(function()
+			  	{
+					i++;
+		  			if(i>4)
+		   			{
+						i=1;
+		   			}
+		  		img.src="第三章/sr"+i+".jpg";
+		 },200)
+		}
+	  }
+	  stop.onclick=function()
+	  {
+	   clearInterval(timer)
+	   flag=0;
+	  }
+ </script>
+-->
+</body>
+</html>
